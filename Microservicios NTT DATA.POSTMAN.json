@@ -1,0 +1,363 @@
+{
+	"info": {
+		"_postman_id": "274623b9-ebaa-4567-80d2-6d74102176d2",
+		"name": "Microservicios NTT DATA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17335825"
+	},
+	"item": [
+		{
+			"name": "Customer MS",
+			"item": [
+				{
+					"name": "List Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseCustomer}}/cliente",
+							"host": [
+								"{{baseCustomer}}"
+							],
+							"path": [
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Jose\",\n  \"dni\": \"\",\n  \"email\": \"perez@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseCustomer}}/customer",
+							"host": [
+								"{{baseCustomer}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseCustomer}}/customer/2",
+							"host": [
+								"{{baseCustomer}}"
+							],
+							"path": [
+								"customer",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account MS",
+			"item": [
+				{
+					"name": "Crear cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numeroCuenta\":\"9393994464\",\n    \"saldo\": 9292.9,\n    \"tipoCuenta\":\"AHORROS\",\n    \"clienteId\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseAccount}}/accounts",
+							"host": [
+								"{{baseAccount}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar cuentas bancarias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseAccount}}/cuentas",
+							"host": [
+								"{{baseAccount}}"
+							],
+							"path": [
+								"cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cuenta por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseAccount}}/accountsd/54",
+							"host": [
+								"{{baseAccount}}"
+							],
+							"path": [
+								"accountsd",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Depositar a cuenta por Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseAccount}}/accounts/depositar/4?amount=5555",
+							"host": [
+								"{{baseAccount}}"
+							],
+							"path": [
+								"accounts",
+								"depositar",
+								"4"
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "5555"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retirar de cuenta por id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseAccount}}/accounts/retirar/1?amount=7",
+							"host": [
+								"{{baseAccount}}"
+							],
+							"path": [
+								"accounts",
+								"retirar",
+								"1"
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaccion MS",
+			"item": [
+				{
+					"name": "Historial de transacciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseTransaccion}}/transacciones/historial",
+							"host": [
+								"{{baseTransaccion}}"
+							],
+							"path": [
+								"transacciones",
+								"historial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar transferencia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipo\": \"TRANSFERENCIA\",\n  \"monto\": 464,\n  \"fecha\": \"2024-10-05\",\n  \"cuentaOrigen\": \"1234567890\",\n  \"cuentaDestino\": \"5678901234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseTransaccion}}/api/transacciones/transferencia?cuentaOrigen=123456789055&cuentaDestino=5678901234&monto=566767",
+							"host": [
+								"{{baseTransaccion}}"
+							],
+							"path": [
+								"api",
+								"transacciones",
+								"transferencia"
+							],
+							"query": [
+								{
+									"key": "cuentaOrigen",
+									"value": "123456789055"
+								},
+								{
+									"key": "cuentaDestino",
+									"value": "5678901234"
+								},
+								{
+									"key": "monto",
+									"value": "566767"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retiro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipo\": \"DEPOSITO\",\n  \"monto\": 464,\n  \"fecha\": \"2024-10-05\",\n  \"cuentaDestino\": \"4567890123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseTransaccion}}/api/transacciones/retiro?cuentaOrigen=0987654321&monto=50.75",
+							"host": [
+								"{{baseTransaccion}}"
+							],
+							"path": [
+								"api",
+								"transacciones",
+								"retiro"
+							],
+							"query": [
+								{
+									"key": "cuentaOrigen",
+									"value": "0987654321"
+								},
+								{
+									"key": "monto",
+									"value": "50.75"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deposito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseTransaccion}}/api/transacciones/deposito?cuentaDestino=0987654321&monto=50.75",
+							"host": [
+								"{{baseTransaccion}}"
+							],
+							"path": [
+								"api",
+								"transacciones",
+								"deposito"
+							],
+							"query": [
+								{
+									"key": "cuentaDestino",
+									"value": "0987654321"
+								},
+								{
+									"key": "monto",
+									"value": "50.75"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseCustomer",
+			"value": "https://customer-ms-production.up.railway.app",
+			"type": "string"
+		},
+		{
+			"key": "baseAccount",
+			"value": "https://account-ms-production.up.railway.app",
+			"type": "string"
+		},
+		{
+			"key": "baseTransaccion",
+			"value": "https://transaction-ms-production.up.railway.app",
+			"type": "string"
+		}
+	]
+}
