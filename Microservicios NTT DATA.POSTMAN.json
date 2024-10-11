@@ -10,7 +10,7 @@
 			"name": "Customer MS",
 			"item": [
 				{
-					"name": "List Customer",
+					"name": "Listar cliente",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -27,7 +27,7 @@
 					"response": []
 				},
 				{
-					"name": "Save Customer",
+					"name": "Guardar cliente",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -65,6 +65,51 @@
 							"path": [
 								"customer",
 								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cliente por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseCustomer}}/cliente/1",
+							"host": [
+								"{{baseCustomer}}"
+							],
+							"path": [
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Bailon Q.\",\r\n    \"apellido\": \"Paucar Montes\",\r\n    \"dni\": \"47094588\",\r\n    \"email\": \"paucarmontesbailonNorieha@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseCustomer}}/cliente/1",
+							"host": [
+								"{{baseCustomer}}"
+							],
+							"path": [
+								"cliente",
+								"1"
 							]
 						}
 					},
@@ -124,12 +169,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseAccount}}/accountsd/54",
+							"raw": "{{baseAccount}}/cuentas/54",
 							"host": [
 								"{{baseAccount}}"
 							],
 							"path": [
-								"accountsd",
+								"cuentas",
 								"54"
 							]
 						}
@@ -137,23 +182,26 @@
 					"response": []
 				},
 				{
-					"name": "Depositar a cuenta por Id",
+					"name": "Depositar a cuenta",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{baseAccount}}/accounts/depositar/4?amount=5555",
+							"raw": "{{baseAccount}}/cuentas/depositar?numeroCuenta=9393994464&monto=5555",
 							"host": [
 								"{{baseAccount}}"
 							],
 							"path": [
-								"accounts",
-								"depositar",
-								"4"
+								"cuentas",
+								"depositar"
 							],
 							"query": [
 								{
-									"key": "amount",
+									"key": "numeroCuenta",
+									"value": "9393994464"
+								},
+								{
+									"key": "monto",
 									"value": "5555"
 								}
 							]
@@ -162,24 +210,27 @@
 					"response": []
 				},
 				{
-					"name": "Retirar de cuenta por id",
+					"name": "Retirar de cuenta",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{baseAccount}}/accounts/retirar/1?amount=7",
+							"raw": "{{baseAccount}}/cuentas/retirar?numeroCuenta=9393994464&monto=100",
 							"host": [
 								"{{baseAccount}}"
 							],
 							"path": [
-								"accounts",
-								"retirar",
-								"1"
+								"cuentas",
+								"retirar"
 							],
 							"query": [
 								{
-									"key": "amount",
-									"value": "7"
+									"key": "numeroCuenta",
+									"value": "9393994464"
+								},
+								{
+									"key": "monto",
+									"value": "100"
 								}
 							]
 						}
@@ -224,27 +275,26 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseTransaccion}}/api/transacciones/transferencia?cuentaOrigen=123456789055&cuentaDestino=5678901234&monto=566767",
+							"raw": "{{baseTransaccion}}/transacciones/transferencia?cuentaOrigen=8889996574&cuentaDestino=8889996574&monto=600",
 							"host": [
 								"{{baseTransaccion}}"
 							],
 							"path": [
-								"api",
 								"transacciones",
 								"transferencia"
 							],
 							"query": [
 								{
 									"key": "cuentaOrigen",
-									"value": "123456789055"
+									"value": "8889996574"
 								},
 								{
 									"key": "cuentaDestino",
-									"value": "5678901234"
+									"value": "8889996574"
 								},
 								{
 									"key": "monto",
-									"value": "566767"
+									"value": "600"
 								}
 							]
 						}
@@ -266,23 +316,22 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseTransaccion}}/api/transacciones/retiro?cuentaOrigen=0987654321&monto=50.75",
+							"raw": "{{baseTransaccion}}/transacciones/retiro?cuentaOrigen=9987888990&monto=100",
 							"host": [
 								"{{baseTransaccion}}"
 							],
 							"path": [
-								"api",
 								"transacciones",
 								"retiro"
 							],
 							"query": [
 								{
 									"key": "cuentaOrigen",
-									"value": "0987654321"
+									"value": "9987888990"
 								},
 								{
 									"key": "monto",
-									"value": "50.75"
+									"value": "100"
 								}
 							]
 						}
@@ -295,23 +344,22 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{baseTransaccion}}/api/transacciones/deposito?cuentaDestino=0987654321&monto=50.75",
+							"raw": "{{baseTransaccion}}/transacciones/deposito?cuentaDestino=9987888990&monto=400",
 							"host": [
 								"{{baseTransaccion}}"
 							],
 							"path": [
-								"api",
 								"transacciones",
 								"deposito"
 							],
 							"query": [
 								{
 									"key": "cuentaDestino",
-									"value": "0987654321"
+									"value": "9987888990"
 								},
 								{
 									"key": "monto",
-									"value": "50.75"
+									"value": "400"
 								}
 							]
 						}
@@ -346,17 +394,17 @@
 	"variable": [
 		{
 			"key": "baseCustomer",
-			"value": "https://customer-ms-production.up.railway.app",
+			"value": "http://localhost:8082",
 			"type": "string"
 		},
 		{
 			"key": "baseAccount",
-			"value": "https://account-ms-production.up.railway.app",
+			"value": "http://localhost:8081",
 			"type": "string"
 		},
 		{
 			"key": "baseTransaccion",
-			"value": "https://transaction-ms-production.up.railway.app",
+			"value": "http://localhost:8084",
 			"type": "string"
 		}
 	]
